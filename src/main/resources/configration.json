@@ -1,0 +1,14 @@
+{
+  "entiryID": "10000008",
+  "paramsName": "NVRT_SOCKET_SERVER",
+  "dcServerMode": "Realtime",
+  "dcServerIPAddress": "192.168.1.96",
+  "dcServerAppPort": 5201,
+  "dcServerSFlowPort": 6343,
+  "dcServerXFlowPort": 6366,
+  "mgmtServerIPAddress": "45.79.162.196",
+  "nvServerIPAddress": "192.168.1.101",
+  "MongoDbHost": "localhost",
+  "MongoDbPort": 27017,
+  "MongoDatabase": "db_ods"
+}
