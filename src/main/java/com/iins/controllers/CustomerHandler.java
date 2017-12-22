@@ -1,5 +1,7 @@
-package com.iins.rest;
+package com.iins.controllers;
 
+import com.iins.models.Customer;
+import com.iins.Repositories.CustomerRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;

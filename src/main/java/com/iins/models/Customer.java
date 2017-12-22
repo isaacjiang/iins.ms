@@ -1,4 +1,4 @@
-package com.iins.rest;
+package com.iins.models;
 
 public class Customer {
     private long custId;

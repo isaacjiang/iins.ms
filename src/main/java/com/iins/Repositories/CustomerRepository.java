@@ -1,6 +1,7 @@
-package com.iins.rest;
+package com.iins.Repositories;
 
 
+import com.iins.models.Customer;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

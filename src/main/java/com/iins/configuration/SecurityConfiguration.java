@@ -1,7 +1,6 @@
-package com.iins.security;
+package com.iins.configuration;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
@@ -37,8 +36,8 @@ public class SecurityConfiguration {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http
                 .authorizeExchange()
-                .pathMatchers(HttpMethod.GET, "/api/**").permitAll()
-                .pathMatchers(HttpMethod.GET, "/admin/**").hasRole("ADMIN")
+                // .pathMatchers(HttpMethod.GET, "/api/**").permitAll()
+                //.pathMatchers(HttpMethod.GET, "/admin/**").hasRole("ADMIN")
                 .anyExchange()
                 .authenticated()
                 .and()

@@ -1,4 +1,4 @@
-package com.iins.rest;
+package com.iins.security;
 
 
 import java.util.HashMap;
@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import com.iins.Repositories.CustomerRepository;
+import com.iins.models.Customer;
 import org.springframework.stereotype.Repository;
 
 
