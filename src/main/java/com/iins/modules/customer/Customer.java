@@ -1,7 +1,7 @@
-package com.iins.models;
+package com.iins.modules.customer;
 
 public class Customer {
-    private long custId;
+    private String id;
     private String firstname;
     private String lastname;
     private int age;
@@ -9,8 +9,8 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(long custId, String firstname, String lastname, int age) {
-        this.custId = custId;
+    public Customer(String custId, String firstname, String lastname, int age) {
+        this.id = custId;
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
@@ -22,12 +22,12 @@ public class Customer {
         this.age = age;
     }
 
-    public long getCustId() {
-        return custId;
+    public String getId() {
+        return id;
     }
 
-    public void setCustId(Long custId) {
-        this.custId = custId;
+    public void setId(String custId) {
+        this.id = custId;
     }
 
     public String getFirstname() {
@@ -56,7 +56,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        String info = String.format("custId = %d, firstname = %s, lastname = %s, age = %d", custId, firstname, lastname, age);
+        String info = String.format("custId = %d, firstname = %s, lastname = %s, age = %d", id, firstname, lastname, age);
         return info;
     }
 }

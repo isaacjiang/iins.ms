@@ -1,4 +1,4 @@
-package com.iins.services;
+package com.iins.system.services;
 
 import org.springframework.scheduling.annotation.Scheduled;
 

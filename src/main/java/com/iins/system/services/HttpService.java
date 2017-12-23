@@ -1,4 +1,4 @@
-package com.iins.services;
+package com.iins.system.services;
 
 import org.apache.http.*;
 import org.apache.http.auth.AuthScope;
