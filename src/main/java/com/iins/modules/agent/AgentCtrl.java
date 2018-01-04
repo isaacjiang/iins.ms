@@ -1,33 +1,30 @@
-package com.iins.modules.customer;
+package com.iins.modules.agent;
 
-import com.iins.system.menuitem.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import org.springframework.http.MediaType;
-
-
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.annotation.PostConstruct;
 
 @Component
-public class CustomerCtrl {
+public class AgentCtrl {
 
     @Autowired
-    private final CustomerRepo customerRepo;
+    private final AgentRepo agentRepo;
 
-    public CustomerCtrl(CustomerRepo repository) {
-        this.customerRepo = repository;
+    public AgentCtrl(AgentRepo repository) {
+        this.agentRepo = repository;
     }
 
     @PostConstruct
     private void initialization() {
-        customerRepo.saveAll(Flux.just(
-                new Customer("10", "Profile", "cutomer_profile", 69),
-                new Customer("11", "Contact Information", "cutomer_profile", 8)//String id,String itemName,String itemKey,String parentId,String parentMenu
+        agentRepo.saveAll(Flux.just(
+                new Agent("10", "Profile", "cutomer_profile", 69),
+                new Agent("11", "Contact Information", "cutomer_profile", 8)//String id,String itemName,String itemKey,String parentId,String parentMenu
         )).subscribe();
         System.out.println("Init Menu ==============================");
     }
@@ -37,8 +34,8 @@ public class CustomerCtrl {
      */
     public Mono<ServerResponse> getAll(ServerRequest request) {
         // fetch all customers from repository
-        Flux<Customer> customers = customerRepo.findAll();
-        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(customers, Customer.class);
+        Flux<Agent> customers = agentRepo.findAll();
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(customers, Agent.class);
     }
 //
 //    /**

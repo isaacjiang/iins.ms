@@ -1,11 +1,11 @@
-package com.iins.modules.customer;
+package com.iins.modules.agent;
 
 
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CustomerRepo extends ReactiveMongoRepository<Customer, String> {
+public interface AgentRepo extends ReactiveMongoRepository<Agent, String> {
 //    public Mono<Quote> getCustomerById(Long id);
 //
 //    public Flux<Quote> getAllCustomers();

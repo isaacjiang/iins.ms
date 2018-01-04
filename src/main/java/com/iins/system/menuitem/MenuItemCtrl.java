@@ -24,8 +24,8 @@ public class MenuItemCtrl {
     @PostConstruct
     private void initialization() {
         menuItemRepo.saveAll(Flux.just(
-                new MenuItem("10", "Profile", "cutomer_profile", "root", "Customer"),
-                new MenuItem("11", "Contact Information", "cutomer_profile", "root", "Customer"),
+                new MenuItem("10", "Profile", "cutomer_profile", "root", "Quote"),
+                new MenuItem("11", "Contact Information", "cutomer_profile", "root", "Quote"),
                 new MenuItem("21", "Quote", "cutomer_profile", "customer", "Quote"),
                 new MenuItem("22", "Calculator", "cutomer_profile", "customer", "Quote")//String id,String itemName,String itemKey,String parentId,String parentMenu
         )).subscribe();
@@ -52,9 +52,7 @@ public class MenuItemCtrl {
         Mono<ServerResponse> notFound = ServerResponse.notFound().build();
 
         // get customer from repository
-        Flux<MenuItem> menuItemFlux = menuItemRepo.findAll().filter((MenuItem item) -> {
-            return parentId.equals(item.getParentId());
-        });
+        Flux<MenuItem> menuItemFlux = menuItemRepo.findAll().filter((MenuItem item) -> parentId.equals(item.getParentId()));
         return menuItemFlux.collectList().flatMap(item -> {
             if (item.isEmpty()) return notFound;
             else return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(menuItemFlux, MenuItem.class);
