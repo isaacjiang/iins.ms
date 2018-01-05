@@ -26,10 +26,10 @@ public class CustomerCtrl {
     @PostConstruct
     private void initialization() {
         customerRepo.saveAll(Flux.just(
-                new Customer("10", "Profile", "cutomer_profile", 69),
-                new Customer("11", "Contact Information", "cutomer_profile", 8)//String id,String itemName,String itemKey,String parentId,String parentMenu
+                new Customer("10", "Profile", "cutomer_profile", "F"),
+                new Customer("11", "Policy Information", "cutomer_profile", "M")//String id,String itemName,String itemKey,String parentId,String parentMenu
         )).subscribe();
-        System.out.println("Init Menu ==============================");
+
     }
 
     /**

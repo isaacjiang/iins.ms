@@ -25,7 +25,7 @@ public class MenuItemCtrl {
     private void initialization() {
         menuItemRepo.saveAll(Flux.just(
                 new MenuItem("10", "Profile", "cutomer_profile", "root", "Quote"),
-                new MenuItem("11", "Contact Information", "cutomer_profile", "root", "Quote"),
+                new MenuItem("11", "Policy Information", "cutomer_profile", "root", "Quote"),
                 new MenuItem("21", "Quote", "cutomer_profile", "customer", "Quote"),
                 new MenuItem("22", "Calculator", "cutomer_profile", "customer", "Quote")//String id,String itemName,String itemKey,String parentId,String parentMenu
         )).subscribe();

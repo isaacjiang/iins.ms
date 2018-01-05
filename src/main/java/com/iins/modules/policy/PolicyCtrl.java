@@ -1,4 +1,4 @@
-package com.iins.modules.quote;
+package com.iins.modules.policy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -11,22 +11,21 @@ import reactor.core.publisher.Mono;
 import javax.annotation.PostConstruct;
 
 @Component
-public class QuoteCtrl {
+public class PolicyCtrl {
 
     @Autowired
-    private final QuoteRepo quoteRepo;
+    private final PolicyRepo addressRepo;
 
-    public QuoteCtrl(QuoteRepo repository) {
-        this.quoteRepo = repository;
+    public PolicyCtrl(PolicyRepo repository) {
+        this.addressRepo = repository;
     }
 
     @PostConstruct
     private void initialization() {
-        quoteRepo.saveAll(Flux.just(
-                new Quote("10", "Profile", "cutomer_profile", 69),
-                new Quote("11", "Policy Information", "cutomer_profile", 8)//String id,String itemName,String itemKey,String parentId,String parentMenu
+        addressRepo.saveAll(Flux.just(
+                new Policy("10001","93 Eaglecrest", "", "", "Kitchener","ON.","Canada"),
+                new Policy("10002","7 Willow", "", "", "Waterloo","ON.","Canada")//String id,String itemName,String itemKey,String parentId,String parentMenu
         )).subscribe();
-        System.out.println("Init Menu ==============================");
     }
 
     /**
@@ -34,8 +33,8 @@ public class QuoteCtrl {
      */
     public Mono<ServerResponse> getAll(ServerRequest request) {
         // fetch all customers from repository
-        Flux<Quote> customers = quoteRepo.findAll();
-        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(customers, Quote.class);
+        Flux<Policy> customers = addressRepo.findAll();
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(customers, Policy.class);
     }
 //
 //    /**

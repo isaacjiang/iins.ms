@@ -23,8 +23,8 @@ public class AgentCtrl {
     @PostConstruct
     private void initialization() {
         agentRepo.saveAll(Flux.just(
-                new Agent("10", "Profile", "cutomer_profile", 69),
-                new Agent("11", "Contact Information", "cutomer_profile", 8)//String id,String itemName,String itemKey,String parentId,String parentMenu
+                new Agent("10", "Profile", "cutomer_profile", "F"),
+                new Agent("11", "Policy Information", "cutomer_profile", "M")//String id,String itemName,String itemKey,String parentId,String parentMenu
         )).subscribe();
         System.out.println("Init Menu ==============================");
     }

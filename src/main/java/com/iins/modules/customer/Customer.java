@@ -1,26 +1,35 @@
 package com.iins.modules.customer;
 
+import com.iins.modules.address.Address;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+
 public class Customer {
+    @Id
     private String id;
-    private String firstname;
-    private String lastname;
-    private int age;
+    private String Firstname;
+    private String Lastname;
+    private String Date_of_Birth;
+    private String Gennder;
 
-    public Customer() {
+    @DBRef
+    private Address Address;
+
+    private String Cell_Phone_Number;
+    private String Work_Phone_Number;
+    private String Home_Phone_Number;
+    private String Email;
+
+
+
+    public Customer(String Firstname, String Lastname, String Date_of_Birth, String Gennder) {
+        this.Firstname = Firstname;
+        this.Lastname = Lastname;
+        this.Date_of_Birth = Date_of_Birth;
+        this.Gennder = Gennder;
     }
 
-    public Customer(String custId, String firstname, String lastname, int age) {
-        this.id = custId;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.age = age;
-    }
 
-    public Customer(String firstname, String lastname, int age) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.age = age;
-    }
 
     public String getId() {
         return id;
@@ -30,33 +39,43 @@ public class Customer {
         this.id = custId;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public Address getAddress() {
+        return Address;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setAddress(Address address) {
+        Address = address;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getCell_Phone_Number() {
+        return Cell_Phone_Number;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setCell_Phone_Number(String cell_Phone_Number) {
+        Cell_Phone_Number = cell_Phone_Number;
     }
 
-    public int getAge() {
-        return age;
+    public String getWork_Phone_Number() {
+        return Work_Phone_Number;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setWork_Phone_Number(String work_Phone_Number) {
+        Work_Phone_Number = work_Phone_Number;
     }
 
-    @Override
-    public String toString() {
-        String info = String.format("custId = %d, firstname = %s, lastname = %s, age = %d", id, firstname, lastname, age);
-        return info;
+    public String getHome_Phone_Number() {
+        return Home_Phone_Number;
+    }
+
+    public void setHome_Phone_Number(String home_Phone_Number) {
+        Home_Phone_Number = home_Phone_Number;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 }
