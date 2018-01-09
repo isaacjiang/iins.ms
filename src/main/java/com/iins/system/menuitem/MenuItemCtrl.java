@@ -24,10 +24,12 @@ public class MenuItemCtrl {
     @PostConstruct
     private void initialization() {
         menuItemRepo.saveAll(Flux.just(
-                new MenuItem("10", "Profile", "cutomer_profile", "root", "Quote"),
-                new MenuItem("11", "Policy Information", "cutomer_profile", "root", "Quote"),
-                new MenuItem("21", "Quote", "cutomer_profile", "customer", "Quote"),
-                new MenuItem("22", "Calculator", "cutomer_profile", "customer", "Quote")//String id,String itemName,String itemKey,String parentId,String parentMenu
+                new MenuItem("10", "Quote", "quote", "root", "Home"),
+                new MenuItem("11", "History Quotes", "history_quotes", "root", "Home"),
+
+                new MenuItem("21", "Active Customers", "customer_list", "customer", "Customer"),
+                new MenuItem("22", "Contact", "contact", "customer", "Customer"),
+                new MenuItem("24", "Address", "address", "customer", "Customer")//String id,String itemName,String itemKey,String parentId,String parentMenu
         )).subscribe();
 
     }

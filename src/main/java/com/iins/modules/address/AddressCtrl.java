@@ -23,8 +23,8 @@ public class AddressCtrl {
     @PostConstruct
     private void initialization() {
         addressRepo.saveAll(Flux.just(
-                new Address("10001","93 Eaglecrest", "", "", "Kitchener","ON.","Canada","N2K 0C4"),
-                new Address("10002","7 Willow", "", "", "Waterloo","ON.","Canada","N2K 0C4")//String id,String itemName,String itemKey,String parentId,String parentMenu
+                new Address("93 Eaglecrest", "", "", "Kitchener","ON.","Canada","N2K 0C4"),
+                new Address("7 Willow", "", "", "Waterloo","ON.","Canada","N2K 0C4")//String id,String itemName,String itemKey,String parentId,String parentMenu
         )).subscribe();
     }
 
