@@ -42,7 +42,7 @@ public class CustomerCtrl {
     }
 //
 //    /**
-//     * GET a Quote by ID
+//     * GET a TravelInsuranceQuote by ID
 //     */
 //    public Mono<ServerResponse> getCustomer(ServerRequest request) {
 //        // parse path-variable
@@ -52,7 +52,7 @@ public class CustomerCtrl {
 //        Mono<ServerResponse> notFound = ServerResponse.notFound().build();
 //
 //        // get customer from repository
-//        Mono<Quote> customerMono = customerRepository.getCustomerById(customerId);
+//        Mono<TravelInsuranceQuote> customerMono = customerRepository.getCustomerById(customerId);
 //
 //        // build response
 //        return customerMono
@@ -61,27 +61,27 @@ public class CustomerCtrl {
 //    }
 //
 //    /**
-//     * POST a Quote
+//     * POST a TravelInsuranceQuote
 //     */
 //    public Mono<ServerResponse> postCustomer(ServerRequest request) {
-//        Mono<Quote> customer = request.bodyToMono(Quote.class);
+//        Mono<TravelInsuranceQuote> customer = request.bodyToMono(TravelInsuranceQuote.class);
 //
 //        return customerRepository.saveCustomer(customer)
 //                .flatMap(cust -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(fromObject(cust)));
 //    }
 //
 //    /**
-//     * PUT a Quote
+//     * PUT a TravelInsuranceQuote
 //     */
 //    public Mono<ServerResponse> putCustomer(ServerRequest request) {
 //        // parse id from path-variable
 //        long customerId = Long.valueOf(request.pathVariable("id"));
 //
 //        // get customer data from request object
-//        Mono<Quote> customer = request.bodyToMono(Quote.class);
+//        Mono<TravelInsuranceQuote> customer = request.bodyToMono(TravelInsuranceQuote.class);
 //
 //        // get customer from repository
-//        Mono<Quote> responseMono = customerRepository.putCustomer(customerId, customer);
+//        Mono<TravelInsuranceQuote> responseMono = customerRepository.putCustomer(customerId, customer);
 //
 //        // build response
 //        return responseMono
@@ -89,7 +89,7 @@ public class CustomerCtrl {
 //    }
 //
 //    /**
-//     * DELETE a Quote
+//     * DELETE a TravelInsuranceQuote
 //     */
 //    public Mono<ServerResponse> deleteCustomer(ServerRequest request) {
 //        // parse id from path-variable

@@ -2,6 +2,7 @@ package com.iins.system.configuration;
 
 
 import com.iins.modules.customer.CustomerCtrl;
+import com.iins.modules.quote.QuoteCtrl;
 import com.iins.system.menuitem.MenuItemCtrl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +32,16 @@ public class RoutingConfiguration {
     public RouterFunction<ServerResponse> menuRouterFunction(MenuItemCtrl menuItemCtrl) {
         return nest(path("/api/menu"), route(RequestPredicates.GET("/").and(accept(MediaType.APPLICATION_JSON)), menuItemCtrl::getAll)
                 .andRoute(GET("/{parentId}").and(accept(MediaType.APPLICATION_JSON)), menuItemCtrl::getItemsByParentId));
+//                .andRoute(POST("/api/customer/post").and(accept(MediaType.APPLICATION_JSON)), customerHandler::postCustomer)
+//                .andRoute(PUT("/api/customer/put/{id}").and(accept(MediaType.APPLICATION_JSON)), customerHandler::putCustomer)
+//                .andRoute(DELETE("/api/customer/delete/{id}").and(accept(MediaType.APPLICATION_JSON)), customerHandler::deleteCustomer);
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> quoteRouterFunction(QuoteCtrl quoteCtrl) {
+        return nest(path("/api/quote"), route(RequestPredicates.GET("/trv").and(accept(MediaType.APPLICATION_JSON)), quoteCtrl::getAllTravelInsuranceQuote)
+                //.andRoute(GET("/{quoteId}").and(accept(MediaType.APPLICATION_JSON)), quoteCtrl::getItemsByParentId)
+        );
 //                .andRoute(POST("/api/customer/post").and(accept(MediaType.APPLICATION_JSON)), customerHandler::postCustomer)
 //                .andRoute(PUT("/api/customer/put/{id}").and(accept(MediaType.APPLICATION_JSON)), customerHandler::putCustomer)
 //                .andRoute(DELETE("/api/customer/delete/{id}").and(accept(MediaType.APPLICATION_JSON)), customerHandler::deleteCustomer);

@@ -24,7 +24,7 @@ public class MenuItemCtrl {
     @PostConstruct
     private void initialization() {
         menuItemRepo.saveAll(Flux.just(
-                new MenuItem("10", "Quote", "quote", "root", "Home"),
+                new MenuItem("10", "Travel Insurance Quote", "travel_insurance_quote", "root", "Home"),
                 new MenuItem("11", "History Quotes", "history_quotes", "root", "Home"),
 
                 new MenuItem("21", "Active Customers", "customer_list", "customer", "Customer"),

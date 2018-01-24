@@ -14,32 +14,35 @@ import javax.annotation.PostConstruct;
 public class QuoteCtrl {
 
     @Autowired
-    private final QuoteRepo quoteRepo;
+    private final TravelInsuranceQuoteRepo travelInsuranceQuoteRepo;
 
-    public QuoteCtrl(QuoteRepo repository) {
-        this.quoteRepo = repository;
+    public QuoteCtrl(TravelInsuranceQuoteRepo repository) {
+        this.travelInsuranceQuoteRepo = repository;
     }
 
     @PostConstruct
     private void initialization() {
-        quoteRepo.saveAll(Flux.just(
-                new Quote("10", "Profile", "cutomer_profile", 69),
-                new Quote("11", "Policy Information", "cutomer_profile", 8)//String id,String itemName,String itemKey,String parentId,String parentMenu
+        travelInsuranceQuoteRepo.saveAll(Flux.just(
+                new TravelInsuranceQuote("SingleTrip", "Canada", "2017-12-01", "2019-02-13","Family"),
+                new TravelInsuranceQuote("MultipleTrip", "America", "2018-02-01", "2018-04-13","Self")
         )).subscribe();
-        System.out.println("Init Menu ==============================");
+            System.out.println("Init Quote ==============================");
     }
 
     /**
      * GET ALL Customers
      */
-    public Mono<ServerResponse> getAll(ServerRequest request) {
-        // fetch all customers from repository
-        Flux<Quote> customers = quoteRepo.findAll();
-        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(customers, Quote.class);
+    public Mono<ServerResponse> getAllTravelInsuranceQuote(ServerRequest request) {
+        // fetch all from repository
+
+        Flux<TravelInsuranceQuote> travelInsuranceQuoteFlux = travelInsuranceQuoteRepo.findAll();
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(travelInsuranceQuoteFlux, TravelInsuranceQuote.class);
     }
+
+
 //
 //    /**
-//     * GET a Quote by ID
+//     * GET a TravelInsuranceQuote by ID
 //     */
 //    public Mono<ServerResponse> getCustomer(ServerRequest request) {
 //        // parse path-variable
@@ -49,7 +52,7 @@ public class QuoteCtrl {
 //        Mono<ServerResponse> notFound = ServerResponse.notFound().build();
 //
 //        // get customer from repository
-//        Mono<Quote> customerMono = customerRepository.getCustomerById(customerId);
+//        Mono<TravelInsuranceQuote> customerMono = customerRepository.getCustomerById(customerId);
 //
 //        // build response
 //        return customerMono
@@ -58,27 +61,27 @@ public class QuoteCtrl {
 //    }
 //
 //    /**
-//     * POST a Quote
+//     * POST a TravelInsuranceQuote
 //     */
 //    public Mono<ServerResponse> postCustomer(ServerRequest request) {
-//        Mono<Quote> customer = request.bodyToMono(Quote.class);
+//        Mono<TravelInsuranceQuote> customer = request.bodyToMono(TravelInsuranceQuote.class);
 //
 //        return customerRepository.saveCustomer(customer)
 //                .flatMap(cust -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(fromObject(cust)));
 //    }
 //
 //    /**
-//     * PUT a Quote
+//     * PUT a TravelInsuranceQuote
 //     */
 //    public Mono<ServerResponse> putCustomer(ServerRequest request) {
 //        // parse id from path-variable
 //        long customerId = Long.valueOf(request.pathVariable("id"));
 //
 //        // get customer data from request object
-//        Mono<Quote> customer = request.bodyToMono(Quote.class);
+//        Mono<TravelInsuranceQuote> customer = request.bodyToMono(TravelInsuranceQuote.class);
 //
 //        // get customer from repository
-//        Mono<Quote> responseMono = customerRepository.putCustomer(customerId, customer);
+//        Mono<TravelInsuranceQuote> responseMono = customerRepository.putCustomer(customerId, customer);
 //
 //        // build response
 //        return responseMono
@@ -86,7 +89,7 @@ public class QuoteCtrl {
 //    }
 //
 //    /**
-//     * DELETE a Quote
+//     * DELETE a TravelInsuranceQuote
 //     */
 //    public Mono<ServerResponse> deleteCustomer(ServerRequest request) {
 //        // parse id from path-variable
