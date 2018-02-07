@@ -22,15 +22,15 @@ public class QuoteCtrl {
 
     @PostConstruct
     private void initialization() {
-        travelInsuranceQuoteRepo.saveAll(Flux.just(
-                new TravelInsuranceQuote("SingleTrip", "Canada", "2017-12-01", "2019-02-13","Family"),
-                new TravelInsuranceQuote("MultipleTrip", "America", "2018-02-01", "2018-04-13","Self")
-        )).subscribe();
+//        travelInsuranceQuoteRepo.saveAll(Flux.just(
+//                new TravelInsuranceQuote("SingleTrip", "Canada", "2017-12-01", "2019-02-13","Family"),
+//                new TravelInsuranceQuote("MultipleTrip", "America", "2018-02-01", "2018-04-13","Self")
+//        )).subscribe();
             System.out.println("Init Quote ==============================");
     }
 
     /**
-     * GET ALL Customers
+     * GET ALL Travel Insurance Quote
      */
     public Mono<ServerResponse> getAllTravelInsuranceQuote(ServerRequest request) {
         // fetch all from repository
@@ -39,7 +39,21 @@ public class QuoteCtrl {
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(travelInsuranceQuoteFlux, TravelInsuranceQuote.class);
     }
 
+    /**
+     * Save Travel Insurance Quote
+     */
+    public Mono<ServerResponse> saveTravelInsuranceQuote(ServerRequest request) {
 
+        Flux<TravelInsuranceQuote> trvQuote = request.bodyToFlux(TravelInsuranceQuote.class);
+//        trvQuote.subscribe((travelInsuranceQuote -> {
+//            System.out.println(travelInsuranceQuote.toJSON());
+//        }));
+
+
+        travelInsuranceQuoteRepo.saveAll(trvQuote).subscribe();
+        Flux<TravelInsuranceQuote> travelInsuranceQuoteFlux = travelInsuranceQuoteRepo.findAll();
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(travelInsuranceQuoteFlux, TravelInsuranceQuote.class);
+    }
 //
 //    /**
 //     * GET a TravelInsuranceQuote by ID

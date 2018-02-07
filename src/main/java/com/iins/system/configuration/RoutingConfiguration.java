@@ -39,8 +39,9 @@ public class RoutingConfiguration {
 
     @Bean
     public RouterFunction<ServerResponse> quoteRouterFunction(QuoteCtrl quoteCtrl) {
-        return nest(path("/api/quote"), route(RequestPredicates.GET("/trv").and(accept(MediaType.APPLICATION_JSON)), quoteCtrl::getAllTravelInsuranceQuote)
-                //.andRoute(GET("/{quoteId}").and(accept(MediaType.APPLICATION_JSON)), quoteCtrl::getItemsByParentId)
+        return nest(path("/api/quote"),
+                route(RequestPredicates.GET("/trv").and(accept(MediaType.APPLICATION_JSON)), quoteCtrl::getAllTravelInsuranceQuote)
+                .andRoute(RequestPredicates.POST("/trv").and(accept(MediaType.APPLICATION_JSON)), quoteCtrl::saveTravelInsuranceQuote)
         );
 //                .andRoute(POST("/api/customer/post").and(accept(MediaType.APPLICATION_JSON)), customerHandler::postCustomer)
 //                .andRoute(PUT("/api/customer/put/{id}").and(accept(MediaType.APPLICATION_JSON)), customerHandler::putCustomer)

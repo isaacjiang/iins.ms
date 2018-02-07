@@ -1,5 +1,6 @@
 package com.iins.modules.quote;
 
+import org.json.JSONObject;
 import org.springframework.data.annotation.Id;
 
 public class TravelInsuranceQuote {
@@ -68,4 +69,17 @@ public class TravelInsuranceQuote {
     public void setCoverageFor(String coverageFor) {
         this.coverageFor = coverageFor;
     }
+
+    public JSONObject toJSON(){
+        JSONObject trvQuote = new JSONObject();
+        trvQuote.put("id",getId());
+        trvQuote.put("typeOfTravel",getTypeOfTravel());
+        trvQuote.put("destination",getDestination());
+        trvQuote.put("dateOfDeparture",getDateOfDeparture());
+        trvQuote.put("dateOfReturn",getDateOfReturn());
+        trvQuote.put("coverageFor",getCoverageFor());
+
+        return trvQuote;
+    }
+
 }
