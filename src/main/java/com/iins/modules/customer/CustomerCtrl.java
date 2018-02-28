@@ -1,6 +1,7 @@
 package com.iins.modules.customer;
 
 import com.iins.system.menuitem.MenuItem;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -25,10 +26,10 @@ public class CustomerCtrl {
 
     @PostConstruct
     private void initialization() {
-        customerRepo.saveAll(Flux.just(
-                new Customer("10", "Profile", "cutomer_profile", "F"),
-                new Customer("11", "Policy Information", "cutomer_profile", "M")//String id,String itemName,String itemKey,String parentId,String parentMenu
-        )).subscribe();
+//        customerRepo.saveAll(Flux.just(
+//                new Customer("Lin", "Fu", "1990-12-10", "F"),
+//                new Customer("Michael", "Smith", "1929-01-09", "M")//String id,String itemName,String itemKey,String parentId,String parentMenu
+//        )).subscribe();
 
     }
 
@@ -60,15 +61,19 @@ public class CustomerCtrl {
 //                .switchIfEmpty(notFound);
 //    }
 //
-//    /**
-//     * POST a TravelInsuranceQuote
-//     */
-//    public Mono<ServerResponse> postCustomer(ServerRequest request) {
-//        Mono<TravelInsuranceQuote> customer = request.bodyToMono(TravelInsuranceQuote.class);
-//
-//        return customerRepository.saveCustomer(customer)
-//                .flatMap(cust -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(fromObject(cust)));
-//    }
+
+
+    /**
+     * POST a Customer
+     */
+    public Mono<ServerResponse> postCustomer(ServerRequest request) {
+
+        Flux<Customer> customer = request.bodyToFlux(Customer.class);
+        //System.out.println(customer.subscribe());
+       customerRepo.saveAll(customer).subscribe();
+        Flux<Customer> customerFlux = customerRepo.findAll();
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(customerFlux,Customer.class);
+    }
 //
 //    /**
 //     * PUT a TravelInsuranceQuote

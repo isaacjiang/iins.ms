@@ -12,8 +12,8 @@ public class Customer {
     private String Date_of_Birth;
     private String Gennder;
 
-    @DBRef
-    private Address Address;
+//    @DBRef
+    private String Address;
 
     private String Cell_Phone_Number;
     private String Work_Phone_Number;
@@ -22,15 +22,21 @@ public class Customer {
 
 
 
-    public Customer(String Firstname, String Lastname, String Date_of_Birth, String Gennder) {
-        this.Firstname = Firstname;
-        this.Lastname = Lastname;
-        this.Date_of_Birth = Date_of_Birth;
-        this.Gennder = Gennder;
+
+
+    public Customer(String Firstname, String Lastname, String Date_of_Birth, String Gennder,String Address,String Cell_Phone_Number,String Work_Phone_Number,String Home_Phone_Number,String Email) {
+        setFirstname(Firstname);
+        setLastname(Lastname);
+        setDate_of_Birth(Date_of_Birth);
+        setGennder(Gennder);
     }
 
-
-
+//    public Customer(String Firstname, String Lastname, String Date_of_Birth, String Gennder) {
+//        setFirstname(Firstname);
+//        setLastname(Lastname);
+//        setDate_of_Birth(Date_of_Birth);
+//        setGennder(Gennder);
+//    }
     public String getId() {
         return id;
     }
@@ -39,11 +45,11 @@ public class Customer {
         this.id = custId;
     }
 
-    public Address getAddress() {
+    public String getAddress() {
         return Address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         Address = address;
     }
 
@@ -77,5 +83,37 @@ public class Customer {
 
     public void setEmail(String email) {
         Email = email;
+    }
+
+    public String getFirstname() {
+        return Firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        Firstname = firstname;
+    }
+
+    public String getLastname() {
+        return Lastname;
+    }
+
+    public void setLastname(String lastname) {
+        Lastname = lastname;
+    }
+
+    public String getDate_of_Birth() {
+        return Date_of_Birth;
+    }
+
+    public void setDate_of_Birth(String date_of_Birth) {
+        Date_of_Birth = date_of_Birth;
+    }
+
+    public String getGennder() {
+        return Gennder;
+    }
+
+    public void setGennder(String gennder) {
+        Gennder = gennder;
     }
 }
